@@ -50,21 +50,37 @@ test('Same year, correct year specified', () => {
 });
 
 test('Specify wrong year under initial', () => {
-  expect(parsed("2019-08-20", "2020-09-10", 2018)).toEqual(0);
+  expect(parsed("2019-08-20", "2020-09-10", 2018)).toEqual('Ano fora dos limites');
 });
 
 test('Specify wrong year under initial', () => {
-  expect(parsed("2019-02-14", "2020-06-15", 2018)).toEqual(0);
+  expect(parsed("2019-02-14", "2020-06-15", 2018)).toEqual('Ano fora dos limites');
 });
 
 test('Specify wrong year above final', () => {
-  expect(parsed("2019-08-20", "2020-09-10", 2021)).toEqual(0);
+  expect(parsed("2019-08-20", "2020-09-10", 2021)).toEqual('Ano fora dos limites');
 });
 
 test('Same year, wrong year, above', () => {
-  expect(parsed("2019-02-14", "2019-06-15", 2020)).toEqual(0);
+  expect(parsed("2019-02-14", "2019-06-15", 2020)).toEqual('Ano fora dos limites');
 });
 
 test('Same year, wrong year, under', () => {
-  expect(parsed("2019-02-14", "2019-06-15", 2017)).toEqual(0);
+  expect(parsed("2019-02-14", "2019-06-15", 2017)).toEqual('Ano fora dos limites');
+});
+
+test('Initial larger than final', () => {
+  expect(parsed("2019-02-14", "2018-06-15")).toEqual('Data inicial maior que final');
+});
+
+test('Not passing a initial date', () => {
+  expect(parsed("", "2018-06-15")).toEqual('preencha os campos');
+});
+
+test('Not passing a final date', () => {
+  expect(parsed("2019-02-14", "")).toEqual('preencha os campos');
+});
+
+test('Not passing any date', () => {
+  expect(parsed("", "")).toEqual('preencha os campos');
 });

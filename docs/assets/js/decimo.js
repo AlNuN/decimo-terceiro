@@ -7,14 +7,17 @@ function monthDiff(d1, d2) {
 }
 
 export default function decimo (initial, final, year){
+  if (initial.getTime() > final.getTime())
+    return 'Data inicial maior que final';
   let rounds = 0;
   if (year !== undefined) {
-    if(year !== initial.getFullYear() && year !== final.getFullYear()) return 0;
+    if(year !== initial.getFullYear() && year !== final.getFullYear()) 
+      return 'Ano fora dos limites';
     if (initial.getFullYear() !== final.getFullYear()){
       if (initial.getFullYear() < year) initial = new Date(year, 0,1);
       if (final.getFullYear() > year) final = new Date(year, 11,31);
     } 
-  }
+  } 
   const initialMonthTotalDays = new Date(initial.getYear(), initial.getMonth() + 1, 0).getDate();
   if (initial.getMonth() === final.getMonth() && initial.getFullYear() === final.getFullYear()) {
     return final.getDate() - initial.getDate() >= 14 ? 1 : 0;
@@ -22,5 +25,5 @@ export default function decimo (initial, final, year){
   if (initialMonthTotalDays - initial.getDate() + 1 >= 15) rounds += 1; 
   if (final.getDate() >= 15) rounds += 1;
   rounds += monthDiff(initial, final) -1;
-  return rounds;
+  return isNaN(rounds) ? 'preencha os campos' : rounds;
 }

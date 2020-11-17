@@ -16,6 +16,6 @@ import dateParser from './dateParser.js'
 
     const response = document.getElementById('resposta');
     response.innerHTML = '';
-    response.innerHTML = `${result} avo(s)`;
+    response.innerHTML = result;
   })
 })()
