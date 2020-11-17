@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "jest",
-    "server": "http-server ./site --port 8080"
+    "server": "http-server ./docs --port 8080"
   },
   "author": "Matheus Alves Nunes",
   "license": "ISC"
