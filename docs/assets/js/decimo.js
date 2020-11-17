@@ -9,14 +9,11 @@ function monthDiff(d1, d2) {
 export default function decimo (initial, final, year){
   let rounds = 0;
   if (year !== undefined) {
+    if(year !== initial.getFullYear() && year !== final.getFullYear()) return 0;
     if (initial.getFullYear() !== final.getFullYear()){
       if (initial.getFullYear() < year) initial = new Date(year, 0,1);
       if (final.getFullYear() > year) final = new Date(year, 11,31);
-    } else {
-      if (year !== initial.getFullYear()) {
-        return 0;
-      }
-    }
+    } 
   }
   const initialMonthTotalDays = new Date(initial.getYear(), initial.getMonth() + 1, 0).getDate();
   if (initial.getMonth() === final.getMonth() && initial.getFullYear() === final.getFullYear()) {

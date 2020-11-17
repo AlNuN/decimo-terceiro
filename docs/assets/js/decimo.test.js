@@ -53,6 +53,10 @@ test('Specify wrong year under initial', () => {
   expect(parsed("2019-08-20", "2020-09-10", 2018)).toEqual(0);
 });
 
+test('Specify wrong year under initial', () => {
+  expect(parsed("2019-02-14", "2020-06-15", 2018)).toEqual(0);
+});
+
 test('Specify wrong year above final', () => {
   expect(parsed("2019-08-20", "2020-09-10", 2021)).toEqual(0);
 });
