@@ -78,7 +78,7 @@ test('Not passing a initial date', () => {
 });
 
 test('Not passing a final date', () => {
-  expect(parsed("2019-02-14", "")).toEqual('preencha os campos');
+  expect(parsed("2019-02-14", "")).toEqual(11);
 });
 
 test('Not passing any date', () => {

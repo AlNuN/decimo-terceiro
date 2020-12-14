@@ -6,7 +6,12 @@ function monthDiff(d1, d2) {
   return months <= 0 ? 0 : months;
 }
 
+function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
+
 export default function decimo (initial, final, year){
+  if (!isValidDate(final)) final = new Date(initial.getFullYear(), 11, 31);
   if (initial.getTime() > final.getTime())
     return 'Data inicial maior que final';
   let rounds = 0;
