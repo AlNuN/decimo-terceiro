@@ -10,7 +10,7 @@ import dateParser from './dateParser.js'
     console.log(initial, final)
 
     const result = decimo(dateParser(initial), dateParser(final), 
-    year !== ''? Number(year) : undefined);
+      year !== ''? Number(year) : undefined);
 
     console.log(result)
 
